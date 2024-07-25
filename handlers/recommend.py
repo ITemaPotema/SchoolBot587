@@ -9,7 +9,7 @@ import sqlite3 as sq
 import asyncio
 
 recommend_rout = Router()
-bot: Bot = Bot(token='6457157815:AAEax-ECU_DegEbtj7p8LjOrXUdtjAFvrdw')
+bot: Bot = Bot(token='your token here')
 
 
 class TypeMessage(StatesGroup):
