@@ -7,7 +7,7 @@ from usefulfunc.create_hash import create_hash, PASSWORD
 from usefulfunc.db_commands import insert_db, select
 
 start_rout = Router()
-bot: Bot = Bot(token='6457157815:AAEax-ECU_DegEbtj7p8LjOrXUdtjAFvrdw')
+bot: Bot = Bot(token='your token here')
 
 
 class ProjectStates(StatesGroup):
