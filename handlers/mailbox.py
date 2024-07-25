@@ -10,7 +10,7 @@ from usefulfunc.db_commands import select, insert_db
 
 
 rout_mail = Router()
-bot = Bot(token='6457157815:AAEax-ECU_DegEbtj7p8LjOrXUdtjAFvrdw')
+bot = Bot(token='your token here')
 
 
 class MailStates(StatesGroup):
