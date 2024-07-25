@@ -7,4 +7,4 @@ def create_hash(password):
     return hash_md5.hexdigest()
 
 
-PASSWORD = create_hash("12345")
+PASSWORD = create_hash("your password here")
