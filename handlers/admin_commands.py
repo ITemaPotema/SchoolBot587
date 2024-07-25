@@ -15,7 +15,7 @@ class AdminStates(StatesGroup):
     delete_one_student = State()
 
 
-@admin_rout.message(lambda mes: mes.from_user.id == 5103563816 and mes.text == "/update")
+@admin_rout.message(lambda mes: mes.from_user.id == "admin_id" and mes.text == "/update")
 async def new_school_year(message: Message, state: FSMContext):
     with sq.connect("pupils.db") as con:
         cur = con.cursor()
@@ -27,7 +27,7 @@ async def new_school_year(message: Message, state: FSMContext):
     await state.set_state(AdminStates.delete_students)
 
 
-@admin_rout.callback_query(StateFilter(AdminStates.delete_students), lambda cal: cal.from_user.id == 5103563816)
+@admin_rout.callback_query(StateFilter(AdminStates.delete_students), lambda cal: cal.from_user.id == "admin_id")
 async def delete_students(callback: CallbackQuery, state: FSMContext):
     if callback.data == "Да":
         with sq.connect("pupils.db") as con:
@@ -42,13 +42,13 @@ async def delete_students(callback: CallbackQuery, state: FSMContext):
     await state.clear()
 
 
-@admin_rout.message(lambda mes: mes.text == "/delete_one_student" and mes.from_user.id == 5103563816)
+@admin_rout.message(lambda mes: mes.text == "/delete_one_student" and mes.from_user.id == "admin_id")
 async def say_delete_student(message: Message, state: FSMContext):
     await message.answer(text="Введи имя и фамилию ученика, которго хотие удалить:")
     await state.set_state(AdminStates.delete_one_student)
 
 
-@admin_rout.message(StateFilter(AdminStates.delete_one_student), lambda mes: mes.from_user.id == 5103563816)
+@admin_rout.message(StateFilter(AdminStates.delete_one_student), lambda mes: mes.from_user.id == "admin_id")
 async def delete_student(message: Message, state: FSMContext):
     name, surname = message.text.split()
     try:
